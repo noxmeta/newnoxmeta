@@ -263,11 +263,107 @@
       to   { opacity:1; transform:translateY(0); }
     }
 
+    /* ── HOSTS SECTION ── */
+    .hosts-section {
+      width:100%; max-width:680px;
+      margin-top:3rem;
+      animation:fadeUp 0.9s 0.45s ease both;
+    }
+
+    .hosts-group {
+      margin-bottom:2.2rem;
+    }
+
+    .hosts-group-label {
+      font-size:0.7rem;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:rgba(245,240,255,0.35);
+      margin-bottom:1rem;
+      padding-left:0.2rem;
+    }
+
+    .hosts-row {
+      display:flex;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    .host-card {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:0.7rem;
+      text-decoration:none;
+      cursor:pointer;
+      transition:transform 0.25s;
+    }
+    .host-card:hover { transform:translateY(-5px); }
+
+    .host-avatar-wrap {
+      position:relative;
+      width:90px; height:90px;
+    }
+    .host-avatar-wrap img {
+      width:100%; height:100%;
+      object-fit:cover;
+      border-radius:16px;
+      border:2px solid rgba(255,255,255,0.08);
+      image-rendering:pixelated;
+      transition:border-color 0.25s, box-shadow 0.25s;
+      display:block;
+    }
+    .host-card:hover .host-avatar-wrap img {
+      border-color:rgba(232,121,249,0.6);
+      box-shadow:0 0 24px rgba(232,121,249,0.3);
+    }
+
+    /* crown for host */
+    .host-crown {
+      position:absolute;
+      top:-12px; left:50%; transform:translateX(-50%);
+      font-size:1.1rem;
+      filter:drop-shadow(0 0 6px rgba(232,121,249,0.8));
+    }
+
+    .host-x-icon {
+      position:absolute;
+      bottom:-6px; right:-6px;
+      width:22px; height:22px;
+      background:#000;
+      border-radius:6px;
+      border:1.5px solid rgba(255,255,255,0.15);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.6rem;
+      font-weight:700;
+      color:white;
+      font-family:'Boogaloo',cursive;
+      letter-spacing:0;
+    }
+
+    .host-name {
+      font-size:0.8rem;
+      font-weight:300;
+      color:rgba(245,240,255,0.65);
+      letter-spacing:0.02em;
+      transition:color 0.25s;
+    }
+    .host-card:hover .host-name { color:var(--accent); }
+
+    /* divider */
+    .hosts-divider {
+      width:100%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      margin-bottom:2.2rem;
+    }
+
     @media (max-width:640px) {
       nav { padding:1rem 1.4rem; }
       .nav-links { gap:1.2rem; }
       .page { padding:7rem 1.2rem 4rem; }
       .countdown-timer { font-size:1.8rem; }
+      .host-avatar-wrap { width:74px; height:74px; }
     }
   </style>
 </head>
@@ -316,6 +412,48 @@
         </div>
       </div>
     </div>
+
+    <!-- Hosts Section -->
+    <div class="hosts-section">
+      <div class="hosts-divider"></div>
+
+      <!-- Host -->
+      <div class="hosts-group">
+        <div class="hosts-group-label">Host</div>
+        <div class="hosts-row">
+          <a class="host-card" href="https://x.com/slickmetax" target="_blank" rel="noopener">
+            <div class="host-avatar-wrap">
+              <img src="avatar-slick.jpeg" alt="@SlickmetaX"/>
+              <div class="host-crown">👑</div>
+              <div class="host-x-icon">𝕏</div>
+            </div>
+            <span class="host-name">@SlickmetaX</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Co-Hosts -->
+      <div class="hosts-group">
+        <div class="hosts-group-label">Co-Hosts</div>
+        <div class="hosts-row">
+          <a class="host-card" href="https://x.com/SwitchMetaX" target="_blank" rel="noopener">
+            <div class="host-avatar-wrap">
+              <img src="avatar-switch.jpeg" alt="@SwitchMetax"/>
+              <div class="host-x-icon">𝕏</div>
+            </div>
+            <span class="host-name">@SwitchMetaX</span>
+          </a>
+          <a class="host-card" href="https://x.com/Noxismeta" target="_blank" rel="noopener">
+            <div class="host-avatar-wrap">
+              <img src="avatar-noxis.jpeg" alt="@Noxismeta"/>
+              <div class="host-x-icon">𝕏</div>
+            </div>
+            <span class="host-name">@Noxismeta</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <script>
