@@ -270,23 +270,27 @@
       animation:fadeUp 0.9s 0.45s ease both;
     }
 
-    .hosts-group {
-      margin-bottom:2.2rem;
+    .hosts-row {
+      display:flex;
+      gap:2.5rem;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    .host-item {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:0.5rem;
     }
 
     .hosts-group-label {
-      font-size:0.7rem;
+      font-size:0.68rem;
       letter-spacing:0.16em;
       text-transform:uppercase;
       color:rgba(245,240,255,0.35);
-      margin-bottom:1rem;
-      padding-left:0.2rem;
-    }
-
-    .hosts-row {
-      display:flex;
-      gap:1.2rem;
-      flex-wrap:wrap;
+      text-align:center;
     }
 
     .host-card {
@@ -417,10 +421,11 @@
     <div class="hosts-section">
       <div class="hosts-divider"></div>
 
-      <!-- Host -->
-      <div class="hosts-group">
-        <div class="hosts-group-label">Host</div>
-        <div class="hosts-row">
+      <div class="hosts-row">
+
+        <!-- Host -->
+        <div class="host-item">
+          <div class="hosts-group-label">Host</div>
           <a class="host-card" href="https://x.com/slickmetax" target="_blank" rel="noopener">
             <div class="host-avatar-wrap">
               <img src="avatar-slick.jpeg" alt="@SlickmetaX"/>
@@ -430,12 +435,10 @@
             <span class="host-name">@SlickmetaX</span>
           </a>
         </div>
-      </div>
 
-      <!-- Co-Hosts -->
-      <div class="hosts-group">
-        <div class="hosts-group-label">Co-Hosts</div>
-        <div class="hosts-row">
+        <!-- Co-Host 1 -->
+        <div class="host-item">
+          <div class="hosts-group-label">Co-Host</div>
           <a class="host-card" href="https://x.com/SwitchMetaX" target="_blank" rel="noopener">
             <div class="host-avatar-wrap">
               <img src="avatar-switch.jpeg" alt="@SwitchMetax"/>
@@ -443,6 +446,11 @@
             </div>
             <span class="host-name">@SwitchMetaX</span>
           </a>
+        </div>
+
+        <!-- Co-Host 2 -->
+        <div class="host-item">
+          <div class="hosts-group-label">Co-Host</div>
           <a class="host-card" href="https://x.com/Noxismeta" target="_blank" rel="noopener">
             <div class="host-avatar-wrap">
               <img src="avatar-noxis.jpeg" alt="@Noxismeta"/>
@@ -451,6 +459,7 @@
             <span class="host-name">@Noxismeta</span>
           </a>
         </div>
+
       </div>
     </div>
 
