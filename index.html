@@ -320,6 +320,97 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── BIO SECTION ── */
+    .bio-section {
+      position: relative;
+      z-index: 10;
+      padding: 6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .bio-inner {
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    .bio-pfp-wrap {
+      position: relative;
+      width: 130px;
+      height: 130px;
+    }
+    .bio-pfp-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      image-rendering: pixelated;
+      border: 2px solid rgba(232,121,249,0.35);
+      box-shadow: 0 0 40px rgba(232,121,249,0.2), 0 0 80px rgba(124,58,237,0.15);
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .bio-pfp-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 28px;
+      background: conic-gradient(from 0deg, #7c3aed, #e879f9, #67e8f9, #7c3aed);
+      z-index: 0;
+      animation: spin 4s linear infinite;
+      opacity: 0.65;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .bio-handle {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+    }
+
+    .bio-name {
+      font-family: 'Boogaloo', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.05;
+      color: var(--white);
+    }
+
+    .bio-divider {
+      width: 48px; height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #7c3aed, #e879f9);
+    }
+
+    .bio-text {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(245,240,255,0.62);
+      line-height: 1.85;
+    }
+    .bio-text em { color: var(--accent2); font-style: normal; }
+
+    .bio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+    .bio-tag {
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(232,121,249,0.25);
+      background: rgba(232,121,249,0.07);
+      font-size: 0.75rem;
+      letter-spacing: 0.07em;
+      color: rgba(245,240,255,0.6);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 1rem 1.4rem; }
@@ -338,11 +429,12 @@
 
   <!-- Nav -->
   <nav>
-    <div class="nav-logo">✦ <span>Nox is Meta</span></div>
+    <div class="nav-logo">✦ <span>Nova</span></div>
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
-      <li><a href="alpharoom.html">Alpha Room</a></li>
-    
+      <li><a href="#">Work</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 
@@ -354,31 +446,72 @@
 
     <!-- Floating pill cards -->
     <div class="floaters">
-      <div class="floater floater-1"><span class="floater-icon">🎨</span> Community</div>
-      <div class="floater floater-2"><span class="floater-icon">✨</span> Doginal Dogs</div>
-      <div class="floater floater-3"><span class="floater-icon">🚀</span> The Alpha Room</div>
+      <div class="floater floater-1"><span class="floater-icon">🎨</span> Creative Design</div>
+      <div class="floater floater-2"><span class="floater-icon">✨</span> Pure Magic</div>
+      <div class="floater floater-3"><span class="floater-icon">🚀</span> Fast &amp; Fun</div>
     </div>
 
     <div class="badge">
       <span class="badge-dot"></span>
-      Launching Soon
+      Available for new projects
     </div>
 
     <h1>
-      <span class="line">Welcome</span>
+      <span class="line">We make</span>
+      <span class="line shimmer">extraordinary</span>
+      <span class="line">things happen.</span>
     </h1>
 
     <p class="sub">
-      Pardon our mess! <em>We are still creating</em>
+      A creative studio obsessed with <em>bold ideas</em> and
+      <em>playful craft</em> — turning imagination into unforgettable digital experiences.
     </p>
 
-   
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">See Our Work</a>
+      <a class="btn btn-ghost" href="#">Say Hello ✦</a>
+    </div>
 
     <div class="scroll-hint">
       <div class="scroll-arrow"></div>
       Scroll
     </div>
 
+  </section>
+
+  <!-- Bio -->
+  <section class="bio-section">
+    <div class="bio-inner">
+
+      <div class="bio-pfp-wrap">
+        <img src="pfp.jpeg" alt="@Noxismeta"/>
+      </div>
+
+      <div>
+        <div class="bio-handle">@Noxismeta</div>
+        <div class="bio-name">Noxis</div>
+      </div>
+
+      <div class="bio-divider"></div>
+
+      <p class="bio-text">
+        Been in the trenches since the <em>2021 bull run</em> — back when gas fees were
+        eye-watering and everyone was aping into JPEGs at 3 AM. Since then, I've
+        collaborated with <em>multiple NFT projects</em> across art, gaming, and PFP
+        collections, helping communities grow from zero to thousands of holders.
+        I've seen the highs, survived the bear, and I'm still here — sharper,
+        more connected, and more convicted than ever. The alpha never stops.
+      </p>
+
+      <div class="bio-tags">
+        <span class="bio-tag">🐂 2021 Bull Run Survivor</span>
+        <span class="bio-tag">🖼️ NFT Collector</span>
+        <span class="bio-tag">🎙️ Alpha Room Host</span>
+        <span class="bio-tag">🔗 Web3 Native</span>
+        <span class="bio-tag">💎 Diamond Hands</span>
+      </div>
+
+    </div>
   </section>
 
   <script>
