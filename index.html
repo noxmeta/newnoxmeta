@@ -27,7 +27,6 @@
       overflow-x: hidden;
     }
 
-    /* ── GRADIENT CANVAS ── */
     .bg {
       position: fixed;
       inset: 0;
@@ -39,7 +38,6 @@
         linear-gradient(160deg, #3b0764 0%, #1e003a 40%, #0a000f 100%);
     }
 
-    /* animated blobs */
     .blob {
       position: fixed;
       border-radius: 50%;
@@ -57,7 +55,6 @@
       to   { transform: translate(30px, 20px) scale(1.08); }
     }
 
-    /* noise grain overlay */
     body::after {
       content: '';
       position: fixed;
@@ -68,7 +65,6 @@
       opacity: 0.04;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -119,7 +115,6 @@
     .nav-links a:hover { color: var(--white); }
     .nav-links a:hover::after { width: 100%; }
 
-    /* ── HERO ── */
     .hero {
       position: relative;
       z-index: 10;
@@ -132,7 +127,6 @@
       padding: 7rem 2rem 4rem;
     }
 
-    /* floating deco stars */
     .stars {
       position: absolute;
       inset: 0;
@@ -201,90 +195,6 @@
       to   { background-position: 200% center; }
     }
 
-    .sub {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      font-weight: 300;
-      color: rgba(245,240,255,0.65);
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 3rem;
-      animation: fadeUp 0.9s 0.3s ease both;
-    }
-    .sub em { color: var(--accent2); font-style: normal; }
-
-    .cta-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeUp 0.9s 0.45s ease both;
-    }
-
-    .btn {
-      padding: 0.85rem 2.2rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .btn:hover { transform: translateY(-3px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #7c3aed, #e879f9);
-      color: #fff;
-      border: none;
-      box-shadow: 0 0 30px rgba(232,121,249,0.35);
-    }
-    .btn-primary:hover { box-shadow: 0 0 50px rgba(232,121,249,0.55); }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(245,240,255,0.25);
-    }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* scroll indicator */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: rgba(245,240,255,0.35);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      animation: fadeUp 1s 0.8s ease both;
-    }
-    .scroll-arrow {
-      width: 20px; height: 30px;
-      border: 1.5px solid rgba(245,240,255,0.2);
-      border-radius: 10px;
-      position: relative;
-    }
-    .scroll-arrow::after {
-      content: '';
-      position: absolute;
-      width: 4px; height: 6px;
-      background: var(--accent);
-      border-radius: 2px;
-      top: 5px; left: 50%; transform: translateX(-50%);
-      animation: scrollBob 1.6s ease-in-out infinite;
-    }
-    @keyframes scrollBob {
-      0%,100% { top: 5px; opacity: 1; }
-      80%      { top: 14px; opacity: 0; }
-    }
-
-    /* floating cards */
     .floaters {
       position: absolute;
       inset: 0;
@@ -310,7 +220,6 @@
       from { transform: translateY(0px) rotate(var(--fr, -2deg)); }
       to   { transform: translateY(-18px) rotate(var(--fr2, 2deg)); }
     }
-
     .floater-1 { top: 22%; left: 6%;  --fd: 7s; --fdelay: 0s;   --fr: -3deg; --fr2: 1deg; }
     .floater-2 { top: 55%; right: 5%; --fd: 9s; --fdelay: -3s;  --fr: 2deg;  --fr2: -2deg; }
     .floater-3 { bottom: 20%; left: 12%; --fd: 6s; --fdelay:-1.5s; --fr: 1deg; --fr2: -3deg; }
@@ -411,7 +320,44 @@
       color: rgba(245,240,255,0.6);
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── PRESS KIT SECTION ── */
+    .presskit-section {
+      position: relative;
+      z-index: 10;
+      padding: 5rem 2rem 7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .presskit-inner {
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .presskit-inner h2 {
+      font-family: 'Boogaloo', cursive;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .presskit-coming-soon {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(245,240,255,0.45);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(232,121,249,0.2);
+      border-radius: 999px;
+      padding: 0.4rem 1.4rem;
+      background: rgba(232,121,249,0.05);
+    }
+
     @media (max-width: 640px) {
       nav { padding: 1rem 1.4rem; }
       .nav-links { gap: 1.2rem; }
@@ -421,63 +367,48 @@
 </head>
 <body>
 
-  <!-- Backgrounds -->
   <div class="bg"></div>
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
 
-  <!-- Nav -->
   <nav>
     <div class="nav-logo">✦ <span>Nox</span></div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>       
+      <li><a href="index.html">Home</a></li>
       <li><a href="alpharoom.html">Alpha Room</a></li>
-      <li><a href="https://market.doginaldogs.com/" target="_blank">Doginal Dogs Market place</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://market.doginaldogs.com/" target="_blank">Doginal Dogs Marketplace</a></li>
       <li><a href="https://doginaldogs.com/join-the-community" target="_blank">Get A Starter Dog</a></li>
-
-
     </ul>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
-
-    <!-- Twinkling stars -->
     <div class="stars" id="stars"></div>
-
-    <!-- Floating pill cards -->
     <div class="floaters">
       <div class="floater floater-1"><span class="floater-icon">🎨</span> Cryptocurrency</div>
       <div class="floater floater-2"><span class="floater-icon">✨</span> Doginal Dogs</div>
       <div class="floater floater-3"><span class="floater-icon">🚀</span> Alpha Room</div>
     </div>
-
     <div class="badge">
       <span class="badge-dot"></span>
-      Make the Undexpected Happen
+      Make the Unexpected Happen
     </div>
-
     <h1>
       <span class="line shimmer">Welcome!</span>
     </h1>
+  </section>
 
-
-  <!-- Bio -->
   <section class="bio-section">
     <div class="bio-inner">
-
       <div class="bio-pfp-wrap">
         <img src="pfp.jpeg" alt="@Noxismeta"/>
       </div>
-
       <div>
         <div class="bio-handle">@Noxismeta</div>
         <div class="bio-name">Hi, I am Nox</div>
       </div>
-
       <div class="bio-divider"></div>
-
       <p class="bio-text">
         Been in the trenches since the <em>2021 bull run</em> — back when gas fees were
         eye-watering and everyone was aping into JPEGs at 3 AM. Since then, I've
@@ -486,7 +417,6 @@
         I've seen the highs, survived the bear, and I'm still here — sharper,
         more connected, and more convicted than ever. The alpha never stops.
       </p>
-
       <div class="bio-tags">
         <span class="bio-tag">🐂 2021 Bull Run Survivor</span>
         <span class="bio-tag">🖼️ NFT Collector</span>
@@ -494,12 +424,19 @@
         <span class="bio-tag">🔗 Web3 Native</span>
         <span class="bio-tag">💎 Diamond Hands</span>
       </div>
+    </div>
+  </section>
 
+  <!-- Press Kit -->
+  <section class="presskit-section">
+    <div class="presskit-inner">
+      <div class="bio-divider"></div>
+      <h2>Press Kit</h2>
+      <span class="presskit-coming-soon">Coming Soon</span>
     </div>
   </section>
 
   <script>
-    // Generate twinkling stars
     const starsEl = document.getElementById('stars');
     for (let i = 0; i < 80; i++) {
       const s = document.createElement('div');
