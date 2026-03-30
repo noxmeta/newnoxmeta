@@ -28,7 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* ── BACKGROUND ── */
     .bg {
       position: fixed; inset: 0; z-index: 0;
       background:
@@ -55,7 +54,6 @@
       opacity:0.04;
     }
 
-    /* ── NAV ── */
     nav {
       position:fixed; top:0; left:0; right:0; z-index:100;
       display:flex; align-items:center; justify-content:space-between;
@@ -85,16 +83,13 @@
     .nav-links a.active { color:var(--white); }
     .nav-links a.active::after { width:100%; }
 
-    /* ── PAGE ── */
     .page {
       position:relative; z-index:10;
       min-height:100vh;
-      padding:9rem 3rem 5rem;
+      padding:9rem 3rem 6rem;
       max-width:860px;
       margin:0 auto;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
+      display:flex; flex-direction:column; align-items:center;
     }
 
     .page-label {
@@ -103,8 +98,7 @@
       border:1px solid rgba(103,232,249,0.4); border-radius:999px;
       font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase;
       color:var(--accent2); background:rgba(103,232,249,0.08);
-      margin-bottom:1.5rem;
-      animation:fadeUp 0.8s ease both;
+      margin-bottom:1.5rem; animation:fadeUp 0.8s ease both;
     }
 
     h1 {
@@ -128,238 +122,93 @@
       font-size:1rem; font-weight:300;
       color:rgba(245,240,255,0.5);
       text-align:center; max-width:420px; line-height:1.7;
-      margin-bottom:3rem;
-      animation:fadeUp 0.9s 0.2s ease both;
+      margin-bottom:3rem; animation:fadeUp 0.9s 0.2s ease both;
     }
 
-    /* ── LIVE CARD ── */
     .live-card {
       width:100%; max-width:680px;
-      border-radius:24px;
-      overflow:hidden;
+      border-radius:24px; overflow:hidden;
       border:1px solid rgba(255,255,255,0.1);
       background:rgba(10,0,20,0.6);
       backdrop-filter:blur(16px);
       animation:fadeUp 0.9s 0.3s ease both;
       transition:box-shadow 0.5s;
     }
-    .live-card.is-live {
-      border-color:rgba(34,197,94,0.5);
-      box-shadow:0 0 60px rgba(34,197,94,0.2), 0 0 20px rgba(34,197,94,0.1);
-    }
-    .live-card.is-offline {
-      border-color:rgba(255,255,255,0.08);
-      box-shadow:none;
-    }
-
-    /* image area */
-    .card-image {
-      position:relative;
-      width:100%;
-      aspect-ratio:16/9;
-      overflow:hidden;
-    }
-    .card-image img {
-      width:100%; height:100%; object-fit:cover;
-      display:block;
-      transition:filter 0.5s;
-    }
-    .is-offline .card-image img {
-      filter:brightness(0.35) saturate(0.3);
-    }
-    .is-live .card-image img {
-      filter:brightness(1) saturate(1.1);
-    }
-
-    /* live glow overlay on image */
-    .live-glow {
-      position:absolute; inset:0; pointer-events:none;
-      background:radial-gradient(ellipse 60% 40% at 50% 100%, rgba(34,197,94,0.18), transparent);
-      opacity:0; transition:opacity 0.5s;
-    }
+    .live-card.is-live { border-color:rgba(34,197,94,0.5); box-shadow:0 0 60px rgba(34,197,94,0.2), 0 0 20px rgba(34,197,94,0.1); }
+    .live-card.is-offline { border-color:rgba(255,255,255,0.08); box-shadow:none; }
+    .card-image { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; }
+    .card-image img { width:100%; height:100%; object-fit:cover; display:block; transition:filter 0.5s; }
+    .is-offline .card-image img { filter:brightness(0.35) saturate(0.3); }
+    .is-live .card-image img { filter:brightness(1) saturate(1.1); }
+    .live-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 60% 40% at 50% 100%, rgba(34,197,94,0.18), transparent); opacity:0; transition:opacity 0.5s; }
     .is-live .live-glow { opacity:1; }
-
-    /* badge on image */
-    .status-badge {
-      position:absolute; top:1rem; left:1rem;
-      display:flex; align-items:center; gap:0.45rem;
-      padding:0.35rem 0.9rem;
-      border-radius:999px;
-      font-size:0.78rem; font-weight:400; letter-spacing:0.08em; text-transform:uppercase;
-      backdrop-filter:blur(8px);
-      transition:background 0.4s, border-color 0.4s, color 0.4s;
-    }
-    .is-live .status-badge {
-      background:rgba(34,197,94,0.2);
-      border:1px solid rgba(34,197,94,0.6);
-      color:#86efac;
-    }
-    .is-offline .status-badge {
-      background:rgba(10,0,20,0.6);
-      border:1px solid rgba(255,255,255,0.12);
-      color:rgba(245,240,255,0.45);
-    }
-    .badge-dot {
-      width:7px; height:7px; border-radius:50%;
-      transition:background 0.4s;
-    }
-    .is-live .badge-dot {
-      background:var(--live);
-      animation:livePulse 1.2s ease-in-out infinite;
-    }
+    .status-badge { position:absolute; top:1rem; left:1rem; display:flex; align-items:center; gap:0.45rem; padding:0.35rem 0.9rem; border-radius:999px; font-size:0.78rem; font-weight:400; letter-spacing:0.08em; text-transform:uppercase; backdrop-filter:blur(8px); transition:background 0.4s, border-color 0.4s, color 0.4s; }
+    .is-live .status-badge { background:rgba(34,197,94,0.2); border:1px solid rgba(34,197,94,0.6); color:#86efac; }
+    .is-offline .status-badge { background:rgba(10,0,20,0.6); border:1px solid rgba(255,255,255,0.12); color:rgba(245,240,255,0.45); }
+    .badge-dot { width:7px; height:7px; border-radius:50%; transition:background 0.4s; }
+    .is-live .badge-dot { background:var(--live); animation:livePulse 1.2s ease-in-out infinite; }
     .is-offline .badge-dot { background:var(--offline); }
     @keyframes livePulse {
       0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(34,197,94,0.6); }
       50%      { opacity:0.8; transform:scale(1.3); box-shadow:0 0 0 4px rgba(34,197,94,0); }
     }
-
-    /* card footer */
-    .card-footer {
-      padding:1.5rem 1.8rem 1.8rem;
-      display:flex; flex-direction:column; align-items:center; gap:0.6rem;
-      text-align:center;
-    }
-
-    .card-title {
-      font-family:'Boogaloo',cursive;
-      font-size:1.8rem;
-      color:var(--white);
-    }
-
-    /* live message */
-    .live-message {
-      font-size:0.95rem; font-weight:300;
-      color:#86efac;
-      display:none;
-    }
+    .card-footer { padding:1.5rem 1.8rem 1.8rem; display:flex; flex-direction:column; align-items:center; gap:0.6rem; text-align:center; }
+    .card-title { font-family:'Boogaloo',cursive; font-size:1.8rem; color:var(--white); }
+    .live-message { font-size:0.95rem; font-weight:300; color:#86efac; display:none; }
     .is-live .live-message { display:block; }
-
-    /* countdown */
-    .countdown-wrap {
-      display:flex; flex-direction:column; align-items:center; gap:0.5rem;
-    }
-    .countdown-label {
-      font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
-      color:rgba(245,240,255,0.4);
-    }
-    .countdown-timer {
-      font-family:'Boogaloo',cursive;
-      font-size:2.4rem;
-      letter-spacing:0.04em;
-      color:var(--white);
-    }
+    .countdown-wrap { display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
+    .countdown-label { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,240,255,0.4); }
+    .countdown-timer { font-family:'Boogaloo',cursive; font-size:2.4rem; letter-spacing:0.04em; color:var(--white); }
     .countdown-timer span { color:var(--accent); }
     .is-live .countdown-wrap { display:none; }
     .is-offline .countdown-wrap { display:flex; }
+    .schedule-line { font-size:0.8rem; font-weight:300; color:rgba(245,240,255,0.35); margin-top:0.2rem; }
 
-    .schedule-line {
-      font-size:0.8rem; font-weight:300;
-      color:rgba(245,240,255,0.35);
-      margin-top:0.2rem;
+    /* ── HOSTS ── */
+    .hosts-section { width:100%; max-width:680px; margin-top:3rem; animation:fadeUp 0.9s 0.45s ease both; }
+    .hosts-row { display:flex; gap:2.5rem; flex-wrap:wrap; justify-content:center; align-items:flex-start; }
+    .host-item { display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
+    .hosts-group-label { font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,255,0.35); text-align:center; }
+    .host-card { display:flex; flex-direction:column; align-items:center; gap:0.7rem; text-decoration:none; cursor:pointer; transition:transform 0.25s; }
+    .host-card:hover { transform:translateY(-5px); }
+    .host-avatar-wrap { position:relative; width:90px; height:90px; }
+    .host-avatar-wrap img { width:100%; height:100%; object-fit:cover; border-radius:16px; border:2px solid rgba(255,255,255,0.08); image-rendering:pixelated; transition:border-color 0.25s, box-shadow 0.25s; display:block; }
+    .host-card:hover .host-avatar-wrap img { border-color:rgba(232,121,249,0.6); box-shadow:0 0 24px rgba(232,121,249,0.3); }
+    .host-crown { position:absolute; top:-12px; left:50%; transform:translateX(-50%); font-size:1.1rem; filter:drop-shadow(0 0 6px rgba(232,121,249,0.8)); }
+    .host-x-icon { position:absolute; bottom:-6px; right:-6px; width:22px; height:22px; background:#000; border-radius:6px; border:1.5px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; font-size:0.6rem; font-weight:700; color:white; font-family:'Boogaloo',cursive; }
+    .host-name { font-size:0.8rem; font-weight:300; color:rgba(245,240,255,0.65); letter-spacing:0.02em; transition:color 0.25s; }
+    .host-card:hover .host-name { color:var(--accent); }
+    .hosts-divider { width:100%; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); margin-bottom:2.2rem; }
+
+    .section-divider { width:100%; max-width:680px; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); margin:3rem 0; }
+    .section-heading { font-family:'Boogaloo',cursive; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--white); text-align:center; margin-bottom:0.6rem; }
+    .section-sub { font-size:0.85rem; font-weight:300; color:rgba(245,240,255,0.4); text-align:center; margin-bottom:2rem; letter-spacing:0.04em; }
+
+    .spaces-wrap { width:100%; max-width:680px; }
+    .spaces-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1rem; }
+
+    .space-card {
+      background:rgba(124,58,237,0.08);
+      border:1px solid rgba(232,121,249,0.15);
+      border-radius:16px; padding:1.2rem 1.4rem;
+      display:flex; flex-direction:column; gap:0.7rem;
+      text-decoration:none;
+      transition:background 0.2s, border-color 0.2s, transform 0.2s;
     }
+    .space-card:hover { background:rgba(124,58,237,0.14); border-color:rgba(232,121,249,0.35); transform:translateY(-3px); }
+    .space-card-top { display:flex; align-items:center; gap:0.8rem; }
+    .space-x-badge { width:32px; height:32px; background:#000; border-radius:8px; border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:white; font-family:'Boogaloo',cursive; flex-shrink:0; }
+    .space-title { font-family:'Boogaloo',cursive; font-size:1rem; color:var(--white); line-height:1.2; }
+    .space-meta { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+    .space-date { font-size:0.72rem; color:rgba(245,240,255,0.35); letter-spacing:0.04em; }
+    .space-dot { width:3px; height:3px; border-radius:50%; background:rgba(245,240,255,0.2); }
+    .space-guests { font-size:0.72rem; color:rgba(245,240,255,0.35); }
+    .space-desc { font-size:0.82rem; font-weight:300; color:rgba(245,240,255,0.5); line-height:1.6; }
+    .space-listen { font-size:0.75rem; color:var(--accent); letter-spacing:0.06em; text-transform:uppercase; margin-top:0.2rem; }
 
     @keyframes fadeUp {
       from { opacity:0; transform:translateY(22px); }
       to   { opacity:1; transform:translateY(0); }
-    }
-
-    /* ── HOSTS SECTION ── */
-    .hosts-section {
-      width:100%; max-width:680px;
-      margin-top:3rem;
-      animation:fadeUp 0.9s 0.45s ease both;
-    }
-
-    .hosts-row {
-      display:flex;
-      gap:2.5rem;
-      flex-wrap:wrap;
-      justify-content:center;
-      align-items:flex-start;
-    }
-
-    .host-item {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:0.5rem;
-    }
-
-    .hosts-group-label {
-      font-size:0.68rem;
-      letter-spacing:0.16em;
-      text-transform:uppercase;
-      color:rgba(245,240,255,0.35);
-      text-align:center;
-    }
-
-    .host-card {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:0.7rem;
-      text-decoration:none;
-      cursor:pointer;
-      transition:transform 0.25s;
-    }
-    .host-card:hover { transform:translateY(-5px); }
-
-    .host-avatar-wrap {
-      position:relative;
-      width:90px; height:90px;
-    }
-    .host-avatar-wrap img {
-      width:100%; height:100%;
-      object-fit:cover;
-      border-radius:16px;
-      border:2px solid rgba(255,255,255,0.08);
-      image-rendering:pixelated;
-      transition:border-color 0.25s, box-shadow 0.25s;
-      display:block;
-    }
-    .host-card:hover .host-avatar-wrap img {
-      border-color:rgba(232,121,249,0.6);
-      box-shadow:0 0 24px rgba(232,121,249,0.3);
-    }
-
-    /* crown for host */
-    .host-crown {
-      position:absolute;
-      top:-12px; left:50%; transform:translateX(-50%);
-      font-size:1.1rem;
-      filter:drop-shadow(0 0 6px rgba(232,121,249,0.8));
-    }
-
-    .host-x-icon {
-      position:absolute;
-      bottom:-6px; right:-6px;
-      width:22px; height:22px;
-      background:#000;
-      border-radius:6px;
-      border:1.5px solid rgba(255,255,255,0.15);
-      display:flex; align-items:center; justify-content:center;
-      font-size:0.6rem;
-      font-weight:700;
-      color:white;
-      font-family:'Boogaloo',cursive;
-      letter-spacing:0;
-    }
-
-    .host-name {
-      font-size:0.8rem;
-      font-weight:300;
-      color:rgba(245,240,255,0.65);
-      letter-spacing:0.02em;
-      transition:color 0.25s;
-    }
-    .host-card:hover .host-name { color:var(--accent); }
-
-    /* divider */
-    .hosts-divider {
-      width:100%;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-      margin-bottom:2.2rem;
     }
 
     @media (max-width:640px) {
@@ -367,7 +216,7 @@
       .nav-links { gap:1.2rem; }
       .page { padding:7rem 1.2rem 4rem; }
       .countdown-timer { font-size:1.8rem; }
-      .host-avatar-wrap { width:74px; height:74px; }
+      .spaces-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -378,28 +227,26 @@
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
 
-  <!-- Nav -->
   <nav>
     <a class="nav-logo" href="index.html">✦ <span>Welcome to the Alpha!</span></a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>        
-      <li><a href="alpharoom.html" class="active">Alpha Room Spaces</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="alpharoom.html" class="active">Alpha Room</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://market.doginaldogs.com/" target="_blank">Doginal Dogs Market place</a></li>
+      <li><a href="https://market.doginaldogs.com/" target="_blank">Doginal Dogs Marketplace</a></li>
       <li><a href="https://doginaldogs.com/join-the-community" target="_blank">Get A Starter Dog</a></li>
-      
     </ul>
   </nav>
 
-  <!-- Page -->
   <main class="page">
+
     <div class="page-label">✦ Exclusive Access</div>
     <h1><span class="shimmer">The Alpha Room</span></h1>
     <p class="page-sub">Live every night 8 PM EST. Tune in for real talk, raw takes, and alpha moves only.</p>
 
     <div class="live-card is-offline" id="liveCard">
       <div class="card-image">
-        <img src="alpharoom-image.png" alt="The Alpha Room" id="cardImg"/>
+        <img src="alpharoom-image.png" alt="The Alpha Room"/>
         <div class="live-glow"></div>
         <div class="status-badge">
           <div class="badge-dot"></div>
@@ -411,7 +258,7 @@
         <div class="live-message">We're live right now — tune in!</div>
         <div class="countdown-wrap">
           <div class="countdown-label">Next show starts in</div>
-          <div class="countdown-timer" id="countdown">
+          <div class="countdown-timer">
             <span id="cdH">00</span>h <span id="cdM">00</span>m <span id="cdS">00</span>s
           </div>
           <div class="schedule-line">Every night · 8:00 PM EST</div>
@@ -419,13 +266,10 @@
       </div>
     </div>
 
-    <!-- Hosts Section -->
+    <!-- Hosts -->
     <div class="hosts-section">
       <div class="hosts-divider"></div>
-
       <div class="hosts-row">
-
-        <!-- Host -->
         <div class="host-item">
           <div class="hosts-group-label">Host</div>
           <a class="host-card" href="https://x.com/slickmetax" target="_blank" rel="noopener">
@@ -437,20 +281,16 @@
             <span class="host-name">@SlickmetaX</span>
           </a>
         </div>
-
-        <!-- Co-Host 1 -->
         <div class="host-item">
           <div class="hosts-group-label">Co-Host</div>
           <a class="host-card" href="https://x.com/SwitchMetaX" target="_blank" rel="noopener">
             <div class="host-avatar-wrap">
-              <img src="avatar-switch.jpeg" alt="@SwitchMetax"/>
+              <img src="avatar-switch.jpeg" alt="@SwitchMetaX"/>
               <div class="host-x-icon">𝕏</div>
             </div>
             <span class="host-name">@SwitchMetaX</span>
           </a>
         </div>
-
-        <!-- Co-Host 2 -->
         <div class="host-item">
           <div class="hosts-group-label">Co-Host</div>
           <a class="host-card" href="https://x.com/Noxismeta" target="_blank" rel="noopener">
@@ -461,6 +301,73 @@
             <span class="host-name">@Noxismeta</span>
           </a>
         </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+    <h2 class="section-heading">Previous Spaces</h2>
+    <p class="section-sub">Catch up on past Alpha Room sessions</p>
+
+    <div class="spaces-wrap">
+      <div class="spaces-grid">
+
+        <!-- To add a space: copy one block below, update the href, title, date, guests, and desc -->
+
+        <a class="space-card" href="https://twitter.com/i/spaces/SPACE_ID_1" target="_blank" rel="noopener">
+          <div class="space-card-top">
+            <div class="space-x-badge">𝕏</div>
+            <div class="space-title">Alpha Room — Market Moves</div>
+          </div>
+          <div class="space-meta">
+            <span class="space-date">Jan 15, 2025</span>
+            <span class="space-dot"></span>
+            <span class="space-guests">w/ SlickmetaX, SwitchMetaX</span>
+          </div>
+          <div class="space-desc">Breaking down the latest market shifts, NFT floor movements, and what's coming next in Web3.</div>
+          <div class="space-listen">Listen replay ↗</div>
+        </a>
+
+        <a class="space-card" href="https://twitter.com/i/spaces/SPACE_ID_2" target="_blank" rel="noopener">
+          <div class="space-card-top">
+            <div class="space-x-badge">𝕏</div>
+            <div class="space-title">Doginal Dogs Deep Dive</div>
+          </div>
+          <div class="space-meta">
+            <span class="space-date">Jan 10, 2025</span>
+            <span class="space-dot"></span>
+            <span class="space-guests">w/ Noxismeta, Slickmetax</span>
+          </div>
+          <div class="space-desc">Everything you need to know about Doginal Dogs — utility, roadmap, and how to get a Starter Dog.</div>
+          <div class="space-listen">Listen replay ↗</div>
+        </a>
+
+        <a class="space-card" href="https://twitter.com/i/spaces/SPACE_ID_3" target="_blank" rel="noopener">
+          <div class="space-card-top">
+            <div class="space-x-badge">𝕏</div>
+            <div class="space-title">Bear Market Survival Guide</div>
+          </div>
+          <div class="space-meta">
+            <span class="space-date">Jan 5, 2025</span>
+            <span class="space-dot"></span>
+            <span class="space-guests">w/ Full Alpha Room crew</span>
+          </div>
+          <div class="space-desc">Raw, unfiltered talk on how to stay sharp, protect your bags, and find alpha when the market is bleeding.</div>
+          <div class="space-listen">Listen replay ↗</div>
+        </a>
+
+        <a class="space-card" href="https://twitter.com/i/spaces/SPACE_ID_4" target="_blank" rel="noopener">
+          <div class="space-card-top">
+            <div class="space-x-badge">𝕏</div>
+            <div class="space-title">2025 Predictions Special</div>
+          </div>
+          <div class="space-meta">
+            <span class="space-date">Dec 31, 2024</span>
+            <span class="space-dot"></span>
+            <span class="space-guests">w/ SlickmetaX, Noxismeta</span>
+          </div>
+          <div class="space-desc">New Year's Eve special — the crew shares their boldest predictions for crypto and NFTs in 2025.</div>
+          <div class="space-listen">Listen replay ↗</div>
+        </a>
 
       </div>
     </div>
@@ -474,427 +381,36 @@
     const cdM       = document.getElementById('cdM');
     const cdS       = document.getElementById('cdS');
 
-    // Live window: 8:00 PM – 9:30 PM EST (UTC-5 standard / UTC-4 daylight)
-    // We'll detect EST offset dynamically
     function getESTNow() {
-      const now = new Date();
-      // EST = UTC-5, EDT = UTC-4; use Intl to get correct local EST time
-      const estStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
-      return new Date(estStr);
+      return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
     }
-
     function getNextLiveStart() {
       const est = getESTNow();
-      // Next 8:00 PM EST
       const next = new Date(est);
       next.setHours(20, 0, 0, 0);
-      if (est >= next) {
-        // Already past 8 PM today — push to tomorrow
-        next.setDate(next.getDate() + 1);
-      }
+      if (est >= next) next.setDate(next.getDate() + 1);
       return next;
     }
-
     function pad(n) { return String(n).padStart(2, '0'); }
-
     function tick() {
-      const est  = getESTNow();
-      const h    = est.getHours();
-      const m    = est.getMinutes();
-      // Live: 20:00 (8 PM) to 21:30 (9:30 PM)
-      const totalMins = h * 60 + m;
+      const est = getESTNow();
+      const totalMins = est.getHours() * 60 + est.getMinutes();
       const isLive = totalMins >= 20 * 60 && totalMins < 21 * 60 + 30;
-
       if (isLive) {
-        card.classList.remove('is-offline');
-        card.classList.add('is-live');
+        card.classList.remove('is-offline'); card.classList.add('is-live');
         badgeText.textContent = 'Live Now';
       } else {
-        card.classList.remove('is-live');
-        card.classList.add('is-offline');
+        card.classList.remove('is-live'); card.classList.add('is-offline');
         badgeText.textContent = 'Offline';
-
-        // Countdown to next 8 PM EST
-        const nextStart = getNextLiveStart();
-        const diffMs    = nextStart - est;
-        const diffSec   = Math.max(0, Math.floor(diffMs / 1000));
-        const hours     = Math.floor(diffSec / 3600);
-        const mins      = Math.floor((diffSec % 3600) / 60);
-        const secs      = diffSec % 60;
-
-        cdH.textContent = pad(hours);
-        cdM.textContent = pad(mins);
-        cdS.textContent = pad(secs);
+        const diffSec = Math.max(0, Math.floor((getNextLiveStart() - est) / 1000));
+        cdH.textContent = pad(Math.floor(diffSec / 3600));
+        cdM.textContent = pad(Math.floor((diffSec % 3600) / 60));
+        cdS.textContent = pad(diffSec % 60);
       }
     }
-
     tick();
     setInterval(tick, 1000);
   </script>
 
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Type Media Schedule – Nox</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: #0f0f0f;
-      color: #e8e8e8;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 2.5rem;
-      letter-spacing: -0.5px;
-    }
-
-    .schedule {
-      max-width: 680px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .period-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #555;
-      padding: 1.5rem 0 0.75rem 0;
-      border-top: 1px solid #1e1e1e;
-      margin-top: 0.5rem;
-    }
-
-    .period-label:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .slot {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.85rem 1rem;
-      border-radius: 10px;
-      transition: background 0.15s;
-      position: relative;
-    }
-
-    .slot:hover {
-      background: #1a1a1a;
-    }
-
-    .slot.live {
-      background: #1a0f0f;
-    }
-
-    .slot.live:hover {
-      background: #201212;
-    }
-
-    .time {
-      font-size: 0.75rem;
-      color: #555;
-      min-width: 52px;
-      text-align: right;
-      font-variant-numeric: tabular-nums;
-      line-height: 1.2;
-    }
-
-    .slot.live .time {
-      color: #e05252;
-      font-weight: 600;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      background: #2a2a2a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      overflow: hidden;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #e8e8e8;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .handle {
-      font-size: 0.78rem;
-      color: #555;
-      margin-top: 1px;
-    }
-
-    .show-title {
-      font-size: 0.82rem;
-      color: #888;
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .badges {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    .badge-live {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      background: #e05252;
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 3px 8px;
-      border-radius: 20px;
-      text-transform: uppercase;
-    }
-
-    .badge-live::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #fff;
-      border-radius: 50%;
-      animation: pulse 1.2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
-    }
-
-    .badge-tag {
-      background: #1e1e1e;
-      color: #888;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      padding: 3px 8px;
-      border-radius: 20px;
-      border: 1px solid #2a2a2a;
-    }
-
-    .divider {
-      height: 1px;
-      background: #1a1a1a;
-      margin: 0 1rem;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>Schedule</h1>
-
-  <div class="schedule">
-
-    <div class="period-label">Morning</div>
-
-<div class="slot">
-      <div class="time">6:00<br>AM</div>
-      <div class="avatar"><img src="BJ.jpg" alt="BJ"></div>
-      <div class="info">
-        <div class="name">BJ</div>
-        <div class="handle">@Bjaura</div>
-        <div class="show-title">BJ Creator Club</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">Type Media</span>
-      </div>
-    </div>
-
-    <div class="slot">
-      <div class="time">7:00<br>AM</div>
-      <div class="avatar"><img src="vee.jpg" alt="Vee"></div>
-      <div class="info">
-        <div class="name">Vee</div>
-        <div class="handle">@veemeta</div>
-        <div class="show-title">Awakening Alpha</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">CSN</span>
-      </div>
-    </div>
-    <div class="divider"></div>
-
-  <div class="slot">
-      <div class="time">9:00<br>AM</div>
-      <div class="avatar"><img src="peak.jpg" alt="Peak"></div>
-      <div class="info">
-        <div class="name">Peak</div>
-        <div class="handle">@peak_arf</div>
-        <div class="show-title">Type Crypto Morning</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">Type Media</span>
-      </div>
-    </div>
-  <div class="divider"></div>
-
-    <div class="slot">
-      <div class="time">10:00<br>AM</div>
-      <div class="avatar"><img src="shibo.jpg" alt="Shibo"></div>
-      <div class="info">
-        <div class="name">Shibo</div>
-        <div class="handle">@godsburnt</div>
-        <div class="show-title">The Finance Show</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">CSN</span>
-      </div>
-    </div>
-  <div class="divider"></div>
-
-    <div class="slot">
-      <div class="time">12:00<br>PM</div>
-      <div class="avatar"><img src="Defi.jpg" alt="Defi"></div>
-      <div class="info">
-        <div class="name">Defi</div>
-        <div class="handle">@lil_defi</div>
-        <div class="show-title">The Crypto Roundtable</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">CSN/Type Media</span>
-      </div>
-    </div>
-
-    <div class="slot">
-      <div class="time">1:00<br>PM</div>
-      <div class="avatar"><img src="guy.jpg" alt="Guy"></div>
-      <div class="info">
-        <div class="name">Guy</div>
-        <div class="handle">@guytypeaura</div>
-        <div class="show-title">Come Face your Fears</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">Type Media</span>
-      </div>
-    </div>
-
-    <div class="slot">
-      <div class="time">3:00<br>PM</div>
-      <div class="avatar">🎧</div>
-      <div class="info">
-        <div class="name">Gruve</div>
-        <div class="handle">@gruvemeta</div>
-        <div class="show-title">AI Copilots w/ Gruve</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">CSN</span>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="slot live">
-      <div class="time">5:00<br>PM</div>
-      <div class="avatar">🐾</div>
-      <div class="info">
-        <div class="name">Bark</div>
-        <div class="handle">@barkmeta</div>
-        <div class="show-title">The Great Reset</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">CSN</span>
-        <span class="badge-live">Live</span>
-      </div>
-    </div>
-
-    <div class="slot">
-      <div class="time">7:00<br>PM</div>
-      <div class="avatar"></div>
-      <div class="info">
-        <div class="name">Mav</div>
-        <div class="handle">@mavmetax</div>
-        <div class="show-title">Tailspin</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">CSN</span>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="slot">
-      <div class="time">8:00<br>PM</div>
-      <div class="avatar">🐱</div>
-      <div class="info">
-        <div class="name">Mellow</div>
-        <div class="handle">@mellowmeta</div>
-        <div class="show-title">The Mellow Hour</div>
-      </div>
-      <div class="badges">Type Media</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="slot">
-      <div class="time">9:00<br>PM</div>
-      <div class="avatar">🦊</div>
-      <div class="info">
-        <div class="name">Javi</div>
-        <div class="handle">@javimedia</div>
-        <div class="show-title">Art of Jawn</div>
-      </div>
-      <div class="badges">Type Media</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="slot">
-      <div class="time">10:30<br>PM</div>
-      <div class="avatar">🌊</div>
-      <div class="info">
-        <div class="name">Riv</div>
-        <div class="handle">@rivaura</div>
-        <div class="show-title">State of Type</div>
-      </div>
-      <div class="badges">
-        <span class="badge-tag">CSN</span>
-      </div>
-    </div>
-
-  </div>
-
-</body>
-</html>
 </body>
 </html>
