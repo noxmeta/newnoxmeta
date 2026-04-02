@@ -5,86 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact ✦ Nox</title>
   <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ── Contact page-specific styles ── */
 
-    :root {
-      --purple:  #7c3aed;
-      --dark:    #0a000f;
-      --white:   #f5f0ff;
-      --accent:  #e879f9;
-      --accent2: #67e8f9;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--dark);
-      color: var(--white);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .bg {
-      position: fixed; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 10%, #6d28d9aa 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, #4c1d9588 0%, transparent 55%),
-        radial-gradient(ellipse 40% 40% at 55% 40%, #7c3aed44 0%, transparent 50%),
-        linear-gradient(160deg, #3b0764 0%, #1e003a 40%, #0a000f 100%);
-    }
-
-    .blob {
-      position: fixed; border-radius: 50%;
-      filter: blur(70px); opacity: 0.35; z-index: 0;
-      animation: drift 14s ease-in-out infinite alternate;
-    }
-    .blob-1 { width: 420px; height: 420px; background: #7c3aed; top: -100px; left: -80px; }
-    .blob-2 { width: 300px; height: 300px; background: #e879f9; top: 30%; right: -60px; animation-delay: -4s; }
-    .blob-3 { width: 260px; height: 260px; background: #67e8f9; bottom: 5%; left: 30%; animation-delay: -8s; }
-
-    @keyframes drift {
-      from { transform: translate(0,0) scale(1); }
-      to   { transform: translate(30px,20px) scale(1.08); }
-    }
-
-    body::after {
-      content: ''; position: fixed; inset: 0; z-index: 1;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.04;
-    }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.4rem 3rem;
-      backdrop-filter: blur(12px);
-      background: rgba(10,0,15,0.35);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav-logo {
-      font-family: 'Boogaloo', cursive; font-size: 1.6rem;
-      letter-spacing: 0.02em; color: var(--white);
-      display: flex; align-items: center; gap: 0.4rem;
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-    .nav-links a {
-      color: rgba(245,240,255,0.7); text-decoration: none;
-      font-size: 0.9rem; font-weight: 300; letter-spacing: 0.06em;
-      text-transform: uppercase; transition: color 0.25s; position: relative;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; left: 0; bottom: -3px;
-      width: 0; height: 1px; background: var(--accent); transition: width 0.3s;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ── CONTACT PAGE ── */
     .contact-wrap {
       position: relative; z-index: 10;
       min-height: 100vh;
@@ -128,7 +52,7 @@
       background: linear-gradient(90deg, #7c3aed, #e879f9);
     }
 
-    /* ── FORM ── */
+    /* Form */
     .contact-form {
       width: 100%;
       display: flex; flex-direction: column; gap: 1.2rem;
@@ -140,10 +64,8 @@
     }
 
     .form-group label {
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
       color: rgba(245,240,255,0.45);
     }
 
@@ -156,12 +78,13 @@
       border-radius: 12px;
       padding: 0.85rem 1.1rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
+      font-size: 0.95rem; font-weight: 300;
       color: var(--white);
       outline: none;
       transition: border-color 0.2s, background 0.2s;
       resize: none;
+      /* Fix iOS zoom on focus — keep font-size ≥ 16px equivalent */
+      -webkit-appearance: none;
     }
 
     .form-group input::placeholder,
@@ -200,17 +123,14 @@
       transition: transform 0.2s, box-shadow 0.2s;
       letter-spacing: 0.04em;
       margin-top: 0.4rem;
+      -webkit-appearance: none;
     }
     .btn-submit:hover {
       transform: translateY(-3px);
       box-shadow: 0 0 50px rgba(232,121,249,0.5);
     }
-
-    .form-note {
-      font-size: 0.75rem;
-      color: rgba(245,240,255,0.3);
-      text-align: center;
-      letter-spacing: 0.04em;
+    .btn-submit:active {
+      transform: translateY(0);
     }
 
     @keyframes fadeUp {
@@ -218,9 +138,18 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* Mobile */
     @media (max-width: 640px) {
-      nav { padding: 1rem 1.4rem; }
-      .nav-links { gap: 1.2rem; }
+      .contact-wrap {
+        padding: 7rem 1.25rem 3rem;
+        justify-content: flex-start;
+      }
+      /* Prevent iOS auto-zoom on input focus */
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -232,14 +161,20 @@
   <div class="blob blob-3"></div>
 
   <nav>
-    <a class="nav-logo" href="index.html">✦ <span>Welcome to the Alpha!</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>        
-      <li><a href="alpharoom.html" class="active">Alpha Room Spaces</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://market.doginaldogs.com/" target="_blank">Doginal Dogs Market place</a></li>
+    <a class="nav-logo" href="index.html"><img src="whitelogo.png" alt="Doginal Dogs" height="36" style="pointer-events:none;" /></a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="alpharoom.html">Alpha Room Spaces</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="https://market.doginaldogs.com/" target="_blank">Doginal Dogs Market Place</a></li>
       <li><a href="https://doginaldogs.com/join-the-community" target="_blank">Get A Starter Dog</a></li>
-      
     </ul>
   </nav>
 
@@ -252,7 +187,6 @@
         <div class="contact-divider"></div>
       </div>
 
-      <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
       <form class="contact-form" action="https://formspree.io/f/mwvwodkv" method="POST">
 
         <div class="form-group">
@@ -282,17 +216,30 @@
           <textarea id="message" name="message" placeholder="What's on your mind..." required></textarea>
         </div>
 
-        <!-- This hidden field tells Formspree where to send the email -->
         <input type="hidden" name="_replyto" value="noxismeta@gmail.com" />
 
         <button type="submit" class="btn-submit">Send Message ✦</button>
-
-      
 
       </form>
 
     </div>
   </div>
+
+  <script>
+    // Hamburger
+    const toggle   = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
 
 </body>
 </html>
