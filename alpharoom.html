@@ -194,7 +194,7 @@
       </div>
       <div class="card-footer">
         <div class="card-title">The Alpha Room 🎙️</div>
-        <div class="live-message">We're live right now — tune in!</div>
+        <div class="live-message">We're live right now — <a id="joinLink" href="#" target="_blank" rel="noopener" style="color:#86efac;text-decoration:underline;">join the Space ↗</a></div>
         <div class="countdown-wrap">
           <div class="countdown-label">Next show starts in</div>
           <div class="countdown-timer">
@@ -312,6 +312,11 @@
   </main>
 
   <script>
+    // ── CONFIGURE THESE ──────────────────────────
+    const BIN_ID  = "YOUR_BIN_ID_HERE";
+    const API_KEY = "YOUR_API_KEY_HERE";
+    // ─────────────────────────────────────────────
+
     // Hamburger
     const toggle   = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
@@ -326,12 +331,31 @@
       });
     });
 
-    // Live countdown
+    // Live countdown + dynamic Space link
     const card      = document.getElementById('liveCard');
     const badgeText = document.getElementById('badgeText');
+    const joinLink  = document.getElementById('joinLink');
     const cdH       = document.getElementById('cdH');
     const cdM       = document.getElementById('cdM');
     const cdS       = document.getElementById('cdS');
+
+    // Fetch saved Space URL from JSONBin
+    async function fetchSpaceUrl() {
+      try {
+        const res  = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+          headers: { 'X-Master-Key': API_KEY }
+        });
+        const data = await res.json();
+        if (data.record && data.record.url) {
+          joinLink.href = data.record.url;
+          // Also make the whole card image clickable when live
+          card.querySelector('.card-image').style.cursor = 'pointer';
+          card.querySelector('.card-image').addEventListener('click', () => {
+            if (card.classList.contains('is-live')) window.open(data.record.url, '_blank');
+          });
+        }
+      } catch(e) { console.warn('Could not fetch Space URL', e); }
+    }
 
     function getESTNow() {
       return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
@@ -360,6 +384,8 @@
         cdS.textContent = pad(diffSec % 60);
       }
     }
+
+    fetchSpaceUrl();
     tick();
     setInterval(tick, 1000);
   </script>
