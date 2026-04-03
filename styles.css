@@ -110,10 +110,10 @@ body::after {
   from { transform: translateY(0px) rotate(var(--fr, -2deg)); }
   to   { transform: translateY(-18px) rotate(var(--fr2, 2deg)); }
 }
-.floater-1 { top: 22%; left: 6%;     --fd: 7s; --fdelay: 0s;    --fr: -3deg; --fr2: 1deg; }
-.floater-2 { top: 55%; right: 5%;   --fd: 9s; --fdelay: -3s;   --fr: 2deg;  --fr2: -2deg; }
-.floater-3 { bottom: 20%; left: 12%; --fd: 6s; --fdelay: -1.5s; --fr: 1deg;  --fr2: -3deg; }
-.floater-4 { top: 20%; left: 70%;   --fd: 8s; --fdelay: -2s;   --fr: -2deg; --fr2: 2deg; }
+.floater-1 { top: 22%; left: 6%;     --fd: 3s; --fdelay: 0s;    --fr: -3deg; --fr2: 1deg; }
+.floater-2 { top: 55%; right: 5%;   --fd: 4s; --fdelay: -3s;   --fr: 2deg;  --fr2: -2deg; }
+.floater-3 { bottom: 20%; left: 12%; --fd: 2.5s; --fdelay: -1.5s; --fr: 1deg;  --fr2: -3deg; }
+.floater-4 { top: 20%; left: 70%;   --fd: 3.5s; --fdelay: -2s;   --fr: -2deg; --fr2: 2deg; }
 
 /* ── Nav ─────────────────────────────────────── */
 nav {
