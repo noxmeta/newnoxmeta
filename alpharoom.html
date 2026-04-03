@@ -363,7 +363,7 @@
     function getNextLiveStart() {
       const est = getESTNow();
       const next = new Date(est);
-      next.setHours(22, 0, 0, 0);
+      next.setHours(20, 0, 0, 0);
       if (est >= next) next.setDate(next.getDate() + 1);
       return next;
     }
