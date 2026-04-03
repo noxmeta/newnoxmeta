@@ -363,7 +363,7 @@
     function getNextLiveStart() {
       const est = getESTNow();
       const next = new Date(est);
-      next.setHours(20, 0, 0, 0);
+      next.setHours(22, 0, 0, 0);
       if (est >= next) next.setDate(next.getDate() + 1);
       return next;
     }
@@ -371,7 +371,7 @@
     function tick() {
       const est = getESTNow();
       const totalMins = est.getHours() * 60 + est.getMinutes();
-      const isLive = totalMins >= 20 * 60 && totalMins < 21 * 60 + 30;
+      const isLive = totalMins >= 20 * 60 && totalMins < 23 * 60 + 30;
       if (isLive) {
         card.classList.remove('is-offline'); card.classList.add('is-live');
         badgeText.textContent = 'Live Now';
