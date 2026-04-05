@@ -96,6 +96,31 @@
     .is-offline .countdown-wrap { display: flex; }
     .schedule-line { font-size: 0.8rem; font-weight: 300; color: rgba(245,240,255,0.35); margin-top: 0.2rem; }
 
+    /* Reminder button */
+    .reminder-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      padding: 0.55rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(232,121,249,0.4);
+      background: rgba(232,121,249,0.08);
+      color: var(--accent);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .reminder-btn:hover {
+      background: rgba(232,121,249,0.16);
+      border-color: rgba(232,121,249,0.65);
+      transform: translateY(-2px);
+    }
+    .reminder-btn.hidden { display: none; }
+
     /* Hosts */
     .hosts-section { width: 100%; max-width: 680px; margin-top: 3rem; animation: fadeUp 0.9s 0.45s ease both; }
     .hosts-row { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; align-items: flex-start; }
@@ -202,6 +227,9 @@
           </div>
           <div class="schedule-line">Every night · 8:00 PM EST</div>
         </div>
+        <a id="reminderBtn" class="reminder-btn" href="https://x.com/slickmetax/status/2037681092912644235?s=20" target="_blank" rel="noopener">
+          🔔 Set Reminder
+        </a>
       </div>
     </div>
 
@@ -213,7 +241,7 @@
           <div class="hosts-group-label">Host</div>
           <a class="host-card" href="https://x.com/slickmetax" target="_blank" rel="noopener">
             <div class="host-avatar-wrap">
-              <img src="avatar-slick.jpeg" alt="@SlickmetaX"/>
+              <img src="avatar-slick.jpg" alt="@SlickmetaX"/>
               <div class="host-crown"></div>
               <div class="host-x-icon">𝕏</div>
             </div>
@@ -332,12 +360,13 @@
     });
 
     // Live countdown + dynamic Space link
-    const card      = document.getElementById('liveCard');
-    const badgeText = document.getElementById('badgeText');
-    const joinLink  = document.getElementById('joinLink');
-    const cdH       = document.getElementById('cdH');
-    const cdM       = document.getElementById('cdM');
-    const cdS       = document.getElementById('cdS');
+    const card        = document.getElementById('liveCard');
+    const badgeText   = document.getElementById('badgeText');
+    const joinLink    = document.getElementById('joinLink');
+    const reminderBtn = document.getElementById('reminderBtn');
+    const cdH         = document.getElementById('cdH');
+    const cdM         = document.getElementById('cdM');
+    const cdS         = document.getElementById('cdS');
 
     // Fetch saved Space URL from JSONBin
     async function fetchSpaceUrl() {
@@ -375,9 +404,11 @@
       if (isLive) {
         card.classList.remove('is-offline'); card.classList.add('is-live');
         badgeText.textContent = 'Live Now';
+        reminderBtn.classList.add('hidden');
       } else {
         card.classList.remove('is-live'); card.classList.add('is-offline');
         badgeText.textContent = 'Offline';
+        reminderBtn.classList.remove('hidden');
         const diffSec = Math.max(0, Math.floor((getNextLiveStart() - est) / 1000));
         cdH.textContent = pad(Math.floor(diffSec / 3600));
         cdM.textContent = pad(Math.floor((diffSec % 3600) / 60));
