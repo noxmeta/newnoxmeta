@@ -370,6 +370,12 @@ nav {
   justify-content: center;
 }
 
+.social-inner h2 {
+  font-family: 'Boogaloo', cursive;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--white);
+  letter-spacing: 0.01em;
+}
 .social-inner {
   max-width: 620px;
   width: 100%;
