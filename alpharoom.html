@@ -278,7 +278,7 @@
     <div class="spaces-wrap">
       <div class="spaces-grid">
 
-        <a class="space-card" href="https://x.com/slickmetax/status/2037681092912644235?s=20" target="_blank" rel="noopener">
+        <a class="space-card" id="latestSpaceCard" href="https://x.com/slickmetax/status/2037681092912644235?s=20" target="_blank" rel="noopener">
           <div class="space-card-top">
             <div class="space-x-badge">𝕏</div>
             <div class="space-title">CSN Interns Episode 7</div>
@@ -377,6 +377,8 @@
         const data = await res.json();
         if (data.record && data.record.url) {
           joinLink.href = data.record.url;
+          reminderBtn.href = data.record.url;
+          document.getElementById('latestSpaceCard').href = data.record.url;
           // Also make the whole card image clickable when live
           card.querySelector('.card-image').style.cursor = 'pointer';
           card.querySelector('.card-image').addEventListener('click', () => {
