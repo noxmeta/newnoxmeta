@@ -361,6 +361,63 @@ nav {
   background: rgba(232,121,249,0.05);
 }
 
+/* ── Social Links ────────────────────────────── */
+.social-section {
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.social-inner {
+  max-width: 620px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-box {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(232,121,249,0.3);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.social-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 56px;
+  color: rgba(245,240,255,0.6);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.social-icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.social-icon-btn:hover { color: var(--white); }
+.tiktok-btn:hover     { background: rgba(124,58,237,0.2);   color: #a78bfa; }
+.instagram-btn:hover  { background: rgba(232,121,249,0.15); color: var(--accent); }
+.x-btn:hover          { background: rgba(103,232,249,0.12); color: var(--accent2); }
+
+.social-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(232,121,249,0.2);
+  flex-shrink: 0;
+}
+
 /* ── Tablet (641px – 900px) ──────────────────── */
 @media (max-width: 900px) {
   nav { padding: 1.2rem 2rem; }
