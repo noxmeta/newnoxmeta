@@ -42,6 +42,12 @@
     .nav-logo img { height: 32px; }
     .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; }
 
+    /* Hide hamburger on desktop, hide nav-links dropdown on mobile by default */
+    @media (min-width: 641px) {
+      .nav-toggle { display: none !important; }
+      .nav-links { display: flex !important; position: static; background: none; padding: 0; border: none; }
+    }
+
     /* ── Hero ── */
     .hero {
       position: relative; z-index: 10;
