@@ -28,31 +28,8 @@
     @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,20px) scale(1.08); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(2,9,20,0.85); border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 32px; pointer-events: none; }
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-    .nav-links a {
-      color: rgba(238,244,255,0.65); text-decoration: none; font-size: 0.78rem;
-      font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
-      transition: color 0.2s; position: relative;
-    }
-    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a.active { color: var(--accent); }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 110; }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* NAV - removed */
+    nav { display: none; }
 
     /* SHARED */
     .eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 500; animation: fadeUp 0.6s ease both; }
@@ -63,9 +40,13 @@
     .section-divider { position: relative; z-index: 10; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.08) 70%, transparent); max-width: 1200px; margin: 0 auto; }
 
     /* HERO */
-    .hero { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; padding: 7rem 4rem 5rem; max-width: 1200px; margin: 0 auto; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; width: 100%; }
+    .hero { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; padding: 5rem 4rem; max-width: 800px; margin: 0 auto; }
+    .hero-grid { width: 100%; }
     .hero-left { display: flex; flex-direction: column; gap: 2rem; }
+    .hero-identity { display: flex; align-items: center; gap: 1.4rem; animation: fadeUp 0.6s ease both; }
+    .hero-pfp { width: 80px; height: 80px; border-radius: 14px; object-fit: cover; border: 2px solid rgba(56,189,248,0.3); box-shadow: 0 0 30px rgba(56,189,248,0.15); flex-shrink: 0; }
+    .hero-card-name { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--white); }
+    .hero-card-handle { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.06em; margin-top: 0.2rem; }
     .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(3rem,5.5vw,5.2rem); font-weight: 800; line-height: 1; letter-spacing: -0.02em; color: var(--white); animation: fadeUp 0.6s 0.1s ease both; }
     .hero-title span { background: linear-gradient(135deg, #38bdf8, #1d6cf0 50%, #7dd3fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero-desc { font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: rgba(238,244,255,0.55); max-width: 480px; animation: fadeUp 0.6s 0.2s ease both; }
@@ -74,19 +55,6 @@
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(29,78,216,0.5); }
     .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.8rem; border-radius: 6px; border: 1px solid var(--border); color: rgba(238,244,255,0.6); font-size: 0.9rem; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s; font-family: 'DM Sans', sans-serif; }
     .btn-ghost:hover { border-color: rgba(56,189,248,0.4); color: var(--white); }
-    .hero-card { position: relative; background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px); animation: fadeUp 0.6s 0.15s ease both; overflow: hidden; }
-    .hero-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(29,78,216,0.08), transparent 60%); pointer-events: none; }
-    .hero-card-top { display: flex; align-items: center; gap: 1.4rem; margin-bottom: 1.8rem; }
-    .hero-pfp { width: 80px; height: 80px; border-radius: 14px; object-fit: cover; border: 2px solid rgba(56,189,248,0.3); box-shadow: 0 0 30px rgba(56,189,248,0.15); }
-    .hero-card-name { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--white); }
-    .hero-card-handle { font-size: 0.8rem; color: var(--accent); letter-spacing: 0.06em; margin-top: 0.2rem; }
-    .hero-card-divider { width: 100%; height: 1px; background: var(--border); margin-bottom: 1.6rem; }
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.8rem; }
-    .stat-item { background: rgba(29,78,216,0.1); border: 1px solid rgba(29,78,216,0.2); border-radius: 10px; padding: 1rem; text-align: center; }
-    .stat-num { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--white); line-height: 1; }
-    .stat-label { font-size: 0.7rem; color: rgba(238,244,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .card-tag { font-size: 0.7rem; padding: 0.25rem 0.75rem; border-radius: 4px; border: 1px solid rgba(56,189,248,0.2); background: rgba(56,189,248,0.06); color: rgba(238,244,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; }
 
     /* SERVICES */
     .services { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 6rem 4rem; }
@@ -139,9 +107,7 @@
 
     /* TABLET */
     @media (max-width: 900px) {
-      nav { padding: 1.2rem 2rem; }
-      .hero { padding: 7rem 2rem 4rem; }
-      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero { padding: 4rem 2rem; }
       .services { padding: 5rem 2rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .about { padding: 5rem 2rem; grid-template-columns: 1fr; gap: 3rem; }
@@ -152,20 +118,7 @@
 
     /* MOBILE */
     @media (max-width: 640px) {
-      nav { padding: 1rem 1.4rem; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none; flex-direction: column; gap: 0;
-        position: fixed; top: 0; left: 0; right: 0;
-        padding: 5rem 2rem 2rem;
-        background: rgba(2,9,20,0.97); backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border); z-index: 105;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
-      .nav-links a { display: block; padding: 1rem 0; font-size: 1rem; letter-spacing: 0.08em; }
-      .nav-links a::after { display: none; }
-      .hero { padding: 6rem 1.25rem 3rem; }
+      .hero { padding: 3rem 1.25rem; }
       .services { padding: 4rem 1.25rem; }
       .services-grid { grid-template-columns: 1fr; }
       .about { padding: 4rem 1.25rem; }
@@ -182,46 +135,22 @@
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
 
-  <nav>
-    <a class="nav-logo" href="index.html"><img src="whitelogo.png" alt="Noxismeta" height="32" /></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://market.doginaldogs.com/" target="_blank">DD Marketplace</a></li>
-      <li><a href="https://doginaldogs.com/join-the-community" target="_blank">Get A Starter Dog</a></li>
-    </ul>
-  </nav>
-
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-left">
+        <div class="hero-identity">
+          <img src="pfp.jpeg" alt="@Noxismeta" class="hero-pfp" />
+          <div>
+            <div class="hero-card-name">Nox</div>
+            <div class="hero-card-handle">@noxismeta</div>
+          </div>
+        </div>
         <div class="eyebrow"><span class="eyebrow-line"></span>Web3 Native · Since 2021</div>
         <h1 class="hero-title">Building the<br/>future of<br/><span>Web3 Community</span></h1>
         <p class="hero-desc">Alpha curator, community architect, and Doginal Dogs ecosystem advocate. Connecting collectors, builders, and investors around what actually matters.</p>
         <div class="hero-cta">
           <a href="contact.html" class="btn-primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Work With Me</a>
           <a href="https://x.com/noxismeta" target="_blank" class="btn-ghost">Follow @noxismeta</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-top">
-          <img src="pfp.jpeg" alt="@Noxismeta" class="hero-pfp" />
-          <div><div class="hero-card-name">Nox</div><div class="hero-card-handle">@noxismeta</div></div>
-        </div>
-        <div class="hero-card-divider"></div>
-        <div class="stats-grid">
-          <div class="stat-item"><div class="stat-num">2021</div><div class="stat-label">In Web3 Since</div></div>
-          <div class="stat-item"><div class="stat-num">Alpha<br/>Room</div><div class="stat-label">Host & Curator</div></div>
-          <div class="stat-item"><div class="stat-num">NFT</div><div class="stat-label">Collector</div></div>
-          <div class="stat-item"><div class="stat-num">DD</div><div class="stat-label">Ecosystem</div></div>
-        </div>
-        <div class="card-tags">
-          <span class="card-tag">🐂 Bull Run Survivor</span>
-          <span class="card-tag">💎 Diamond Hands</span>
-          <span class="card-tag">🔗 Web3 Native</span>
         </div>
       </div>
     </div>
